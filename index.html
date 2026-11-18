@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky Mabasa | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      background: #38bdf8;
+      filter: blur(220px);
+      opacity: 0.12;
+      top: -200px;
+      right: -200px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: #0ea5e9;
+      filter: blur(220px);
+      opacity: 0.08;
+      bottom: -200px;
+      left: -200px;
+      z-index: -1;
+    }
+
+    .grid-bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 22px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(2,6,23,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 35px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 60px;
+      padding: 140px 10%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    .hero-text h2 {
+      color: #cbd5e1;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 85px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text span {
+      color: #38bdf8;
+    }
+
+    .typing-text {
+      color: #38bdf8;
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      line-height: 1.9;
+      font-size: 18px;
+      margin-bottom: 35px;
+      max-width: 650px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 32px;
+      border-radius: 14px;
+      border: 2px solid #38bdf8;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.4s;
+    }
+
+    .btn:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: translateY(-5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-icons a {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #38bdf8;
+      border-radius: 50%;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 22px;
+      transition: 0.4s;
+    }
+
+    .social-icons a:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: translateY(-8px);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      min-width: 320px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 25px;
+      border: 4px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 40px rgba(56,189,248,0.3);
+    }
+
+    section {
+      padding: 110px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 50px;
+      margin-bottom: 70px;
+      color: #38bdf8;
+    }
+
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p {
+      color: #cbd5e1;
+      line-height: 2;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
+    .skill {
+      background: #0f172a;
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .skill:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(56,189,248,0.2);
+    }
+
+    .skill i {
+      font-size: 60px;
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .skill h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 14px;
+      background: #1e293b;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right,#38bdf8,#0ea5e9);
+      border-radius: 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 10px;
+      font-size: 12px;
+      color: #020617;
+      font-weight: bold;
+    }
+
+    .python { width: 85%; }
+    .sql { width: 88%; }
+    .html { width: 92%; }
+    .js { width: 78%; }
+    .csharp { width: 85%; }
+    .php { width: 70%; }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,520px));
+      gap: 35px;
+      justify-content: center;
+    }
+
+    .project {
+      background: #0f172a;
+      border-radius: 25px;
+      overflow: hidden;
+      transition: 0.4s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .project-content p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .project-tags span {
+      background: rgba(56,189,248,0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56,189,248,0.35);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: #38bdf8;
+      color: #020617;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
+    .contact-box {
+      background: #0f172a;
+      padding: 35px;
+      text-align: center;
+      border-radius: 25px;
+    }
+
+    .contact-box i {
+      font-size: 40px;
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(15,23,42,0.8);
+      border-radius: 25px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      padding: 20px;
+      border-radius: 20px;
+      background: #020617;
+      margin-bottom: 20px;
+    }
+
+    .bot-message,
+    .user-message {
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 18px;
+      max-width: 80%;
+      line-height: 1.6;
+    }
+
+    .bot-message {
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+
+    .user-message {
+      background: #38bdf8;
+      color: #020617;
+      margin-left: auto;
+      font-weight: 600;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 15px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      background: #0f172a;
+      color: white;
+      font-size: 16px;
+    }
+
+    .chat-input-area button {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 12px;
+      background: #38bdf8;
+      color: #020617;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .chat-input-area button:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      background: #010409;
+      color: #94a3b8;
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 58px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero-buttons,
+      .social-icons {
+        justify-content: center;
+      }
+    }
+
+    @media(max-width:500px) {
+      .hero-text h1 {
+        font-size: 45px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .chat-input-area {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grid-bg"></div>
+
+  <header>
+    <div class="logo">Lucky Mabasa</div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h2>Hello, I'm</h2>
+
+      <h1><span>Lucky</span> Mabasa</h1>
+
+      <h3 class="typing-text">Software Developer</h3>
+
+      <p>
+        Software Development graduate passionate about programming,
+        databases, modern web development, and building real-world systems.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+
+      <div class="social-icons">
+
+        <a href="https://github.com/lucky-mabasa"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="GitHub"
+           title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/lucky-mabasa-3a542820b/"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn"
+           title="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="myphoto.jpg" alt="Lucky Mabasa">
+    </div>
+
+  </section>
+
+  <section id="about">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+
+      <p>
+        I have completed my Software Development studies at
+        Nelson Mandela University and am based in Johannesburg, South Africa.
+      </p>
+
+      <p>
+        I enjoy building websites, databases,
+        and modern software applications.
+      </p>
+
+      <p>
+        I am ready to apply my software development knowledge,
+        build real-world applications, and contribute to a professional
+        development team.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-container">
+
+      <div class="skill">
+        <i class="fa-brands fa-python"></i>
+        <h3>Python</h3>
+        <div class="progress-bar">
+          <div class="progress python">85%</div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <i class="fa-solid fa-database"></i>
+        <h3>SQL</h3>
+        <div class="progress-bar">
+          <div class="progress sql">88%</div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-html5"></i>
+        <h3>HTML &amp; CSS</h3>
+        <div class="progress-bar">
+          <div class="progress html">92%</div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-js"></i>
+        <h3>JavaScript</h3>
+        <div class="progress-bar">
+          <div class="progress js">78%</div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <i class="fa-brands fa-php"></i>
+        <h3>PHP</h3>
+        <div class="progress-bar">
+          <div class="progress php">70%</div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <i class="fa-solid fa-code"></i>
+        <h3>C#</h3>
+        <div class="progress-bar">
+          <div class="progress csharp">85%</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="projects">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-container">
+
+      <div class="project">
+
+        <img
+          src="https://images.unsplash.com/photo-1551522435-a13afa10f103?auto=format&fit=crop&w=1200&q=80"
+          alt="WorkshopPros vehicle service management system">
+
+        <div class="project-content">
+
+          <span class="featured-badge">Featured</span>
+
+          <h3>WorkshopPros</h3>
+
+          <p>
+            A vehicle service management system built with ASP.NET MVC
+            and SQL Server. Supports four role-based dashboards
+            (Admin, Workshop Owner, Mechanic, and Customer), each with a
+            tailored view — from managing bookings, vehicles, and invoices,
+            to tracking job status and mechanic performance.
+          </p>
+
+          <div class="project-tags">
+            <span>ASP.NET MVC</span>
+            <span>C#</span>
+            <span>Entity Framework</span>
+            <span>SQL Server</span>
+            <span>Bootstrap</span>
+          </div>
+
+          <a href="https://github.com/lucky-mabasa"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn">View GitHub Profile</a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-container">
+
+      <div class="contact-box">
+        <i class="fa-solid fa-envelope"></i>
+        <p>
+          <a href="mailto:mabasalucky94@gmail.com"
+             style="color:white;text-decoration:none;">
+            mabasalucky94@gmail.com
+          </a>
+        </p>
+      </div>
+
+      <div class="contact-box">
+        <i class="fa-solid fa-phone"></i>
+        <p>072 407 4940</p>
+      </div>
+
+      <div class="contact-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <p>Johannesburg, South Africa</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="ai-chat">
+
+    <h2 class="section-title">AI Assistant</h2>
+
+    <div class="chat-container">
+
+      <div class="chat-box" id="chat-box">
+
+        <div class="bot-message">
+          👋 Hello! I'm Lucky's portfolio assistant.
+          Ask me about his skills, projects, education, or experience.
+        </div>
+
+      </div>
+
+      <div class="chat-input-area">
+
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Ask something..."
+          onkeydown="if(event.key === 'Enter') sendMessage()">
+
+        <button onclick="sendMessage()">Send</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Lucky Mabasa | All Rights Reserved</p>
+  </footer>
+
+  <script>
+
+    function sendMessage() {
+
+      let input = document.getElementById("user-input");
+      let message = input.value.trim().toLowerCase();
+      let chatBox = document.getElementById("chat-box");
+
+      if (message === "") {
+        return;
+      }
+
+      let userMessage = document.createElement("div");
+      userMessage.className = "user-message";
+      userMessage.textContent = input.value;
+      chatBox.appendChild(userMessage);
+
+      let reply = "";
+
+      if (message.includes("name")) {
+        reply = "His name is Lucky Mabasa.";
+      }
+
+      else if (
+        message.includes("workshoppros") ||
+        message.includes("workshop pros")
+      ) {
+        reply = "WorkshopPros is Lucky's featured vehicle service management system, built using ASP.NET MVC, C#, Entity Framework and SQL Server. It includes role-based dashboards for Admins, Workshop Owners, Mechanics and Customers.";
+      }
+
+      else if (message.includes("skill")) {
+        reply = "Lucky's skills include Python, SQL, HTML, CSS, JavaScript, PHP, C#, ASP.NET MVC and Entity Framework.";
+      }
+
+      else if (message.includes("project")) {
+        reply = "Lucky's featured project is WorkshopPros, a vehicle service management system.";
+      }
+
+      else if (message.includes("education") || message.includes("study")) {
+        reply = "Lucky has completed his Software Development studies at Nelson Mandela University.";
+      }
+
+      else if (message.includes("contact")) {
+        reply = "You can contact Lucky through email at mabasalucky94@gmail.com or connect with him on LinkedIn.";
+      }
+
+      else if (message.includes("experience")) {
+        reply = "Lucky has completed his Software Development studies and has developed practical software projects, including WorkshopPros.";
+      }
+
+      else if (message.includes("where")) {
+        reply = "Lucky is based in Johannesburg, South Africa.";
+      }
+
+      else if (message.includes("github")) {
+        reply = "You can visit Lucky's GitHub profile at github.com/lucky-mabasa.";
+      }
+
+      else if (message.includes("linkedin")) {
+        reply = "You can connect with Lucky on LinkedIn at linkedin.com/in/lucky-mabasa-3a542820b.";
+      }
+
+      else {
+        reply = "I can answer questions about Lucky's education, skills, projects, contact details, and experience.";
+      }
+
+      setTimeout(() => {
+
+        let botMessage = document.createElement("div");
+        botMessage.className = "bot-message";
+        botMessage.textContent = reply;
+
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+      }, 400);
+
+      input.value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+    }
+
+  </script>
+
+</body>
+</html>
